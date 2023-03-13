@@ -1,17 +1,7 @@
-// const isCat = true;
+const names = ["Michelangelo", "Leonardo", "Raffaello", "Donatello"];
 
-// if (isCat) {
-//   console.log("C'est un chat");
-// }
-
-// const isCat = "Felix";
-
-// if (isCat) {
-//   console.log("C'est un chat qui s'appelle Felix");
-// }
-
-const isCat = undefined;
-
-if (isCat) {
-  console.log("C'est un chat");
+if (names.indexOf("Schreder") === -1) {
+  // si l'élément "Schreder" n'existe pas dans le tableau, alors...
 }
+
+console.log(names.indexOf);
