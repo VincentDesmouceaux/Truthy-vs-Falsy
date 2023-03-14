@@ -7,7 +7,7 @@ const cowsay = (words, lineWidth) => {
       line = [word];
       currentLine = word.length;
     } else {
-      lines.push([word.slice(O, lineWidth - 1) + "-"]);
+      lines.push([word.slice(0, lineWidth - 1) + "-"]);
       checkIfEnoughSpacesLeft(word.slice(lineWidth - 1));
     }
   };
@@ -20,7 +20,35 @@ const cowsay = (words, lineWidth) => {
     for (let i = 0; i < words.length; i++) {
       lines.push(words[i]);
     }
+  } else {
+    words = words.split(" ");
+    for (let i = 0; i < words.length; i++) {
+      if (currentLine + line.length + words[i].length <= lineWidth) {
+        line.push(words[i]);
+        currentLine = currentLine + words[i].length;
+      } else {
+        const charLeft = lineWidth - line.join(" ").length;
+        if (charLeft > 2 && words[i].length === charLeft - 1) {
+          line.push(words[i]);
+          line.push(line);
+          line = [];
+          currentLine = 0;
+        } else if (charLeft > 2) {
+          line.push(words[i].slice(0, charLeft - 2) + "-");
+          line.push(line);
+          const secondPart = words[i].slice(charLeft - 2);
+
+          checkIfEnoughSpacesLeft(secondPart);
+        } else {
+          line.push(line);
+          checkIfEnoughSpacesLeft(words[i]);
+        }
+      }
+    }
+
+    lines.push(line);
   }
+  console.log(` ${"_".repeat(lineWidth + 2)}`);
 };
 
 console.log(cowsay(str));
