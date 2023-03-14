@@ -12,7 +12,7 @@
 // Début de votre code
 
 const last = (tab) => {
-  const pop = tab.pop(2);
+  const pop = tab.pop();
 
   return pop;
 };

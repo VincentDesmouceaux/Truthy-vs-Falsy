@@ -4,4 +4,4 @@ if (names.indexOf("Schreder") === -1) {
   // si l'élément "Schreder" n'existe pas dans le tableau, alors...
 }
 
-console.log(names.indexOf);
+console.log(names.indexOf("Schreder"));
